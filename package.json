@@ -1,0 +1,54 @@
+{
+  "name": "tensorchart-api",
+  "version": "1.0.0",
+  "description": "api for https://www.tensorcharts.com/",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorratts13/tensorchart-api.git"
+  },
+  "keywords": [
+    "tensorchart",
+    "api",
+    "tensorchart",
+    "api",
+    "tensorchart-api",
+    "tensorjs",
+    "btc",
+    "ltc",
+    "eth",
+    "usdt",
+    "chartsjs",
+    "chartApiBitcoin",
+    "bitcoin",
+    "bitcoin-chart",
+    "btc-usdt",
+    "technical-indicators",
+    "indicators",
+    "bot",
+    "polonix",
+    "binance",
+    "bitmex",
+    "bitfinex",
+    "nexus",
+    "nodejs"
+  ],
+  "author": "Victor Ratts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victorratts13/tensorchart-api/issues"
+  },
+  "homepage": "https://github.com/victorratts13/tensorchart-api#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "axios-cookiejar-support": "^1.0.1",
+    "qs": "^6.9.4",
+    "socket.io": "^3.0.4",
+    "socket.io-client": "^3.0.4",
+    "tough-cookie": "^4.0.0",
+    "ws": "^7.4.1"
+  }
+}
