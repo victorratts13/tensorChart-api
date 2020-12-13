@@ -3,7 +3,11 @@ const tensorChart = require('./index');
 //use with exchange and currencie Pair
 const tensor = new tensorChart('binance', 'BNBBTC')
 //const {socket} = require("./controllers/socket");
-tensor.chart('5min').then(data => {
+//tensor.chart('5min').then(data => {
+//    console.log(data)
+//})
+
+tensor.tradingViewChart('5min').then(data => {
     console.log(data)
 })
 

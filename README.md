@@ -165,3 +165,16 @@ tensor.chart('5min').then(chart => {
     dateInt: 1607671800
   }
 ```
+
+## format tradingview export
+
+to export tradingview format on ``udf`` protocol try this.:
+
+```js
+//define time for get data 5min, 30min, ...
+tensor.tradingViewChart('5min').then(data => {
+    console.log(data)
+})
+```
+
+
