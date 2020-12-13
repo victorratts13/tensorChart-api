@@ -177,4 +177,34 @@ tensor.tradingViewChart('5min').then(data => {
 })
 ```
 
+## get config format tradingView
+
+to get data for config json chart, you can try this.
+
+```js
+tensor.tradingViewConfig(null).then(data => {
+    console.log(data)
+})
+```
+
+end return this.
+
+```bash
+{
+  supports_search: true,
+  supports_group_request: false,
+  supports_marks: false,
+  supports_timescale_marks: false,
+  supports_time: true,
+  exchanges: { value: 'BINANCE', name: 'BINANCE', desc: 'BINANCE' },
+  supported_resolutions: [
+    '1',   '3',   '5',
+    '15',  '30',  '60',
+    '120', '240', '360',
+    '720', 'D',   'W',
+    'M'
+  ]
+}
+```
+
 

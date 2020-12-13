@@ -1,19 +1,19 @@
-const { 
-    settings, 
-    trades, 
-    markets, 
+const {
+    settings,
+    trades,
+    markets,
     orderBook,
-    volumeCounters, 
-    heatmapCandles 
+    volumeCounters,
+    heatmapCandles
 } = require("./controllers/requests");
 
-class tensorChart{
-    constructor(exchange, pair){
+class tensorChart {
+    constructor(exchange, pair) {
         this.exchange = exchange;
         this.pair = pair;
     }
 
-    chart(candleTime){
+    chart(candleTime) {
         return new Promise((resolve, reject) => {
             settings(this.exchange, this.pair).then(data => {
                 heatmapCandles(this.exchange, data.Name, candleTime).then(chart => {
@@ -27,7 +27,49 @@ class tensorChart{
         })
     }
 
-    tradingViewChart(candleTime){
+    tradingViewConfig(definitions = {}) {
+        return new Promise((resolve, reject) => {
+            settings(this.exchange, this.pair).then(info => {
+                if(definitions == {} || definitions == null){
+                    var tvconf = {
+                        supports_search: true,
+                        supports_group_request: false,
+                        supports_marks: false,
+                        supports_timescale_marks: false,
+                        supports_time: true,
+                        exchanges: {
+                            value: this.exchange.toUpperCase(),
+                            name: this.exchange.toUpperCase(),
+                            desc: this.exchange.toUpperCase(),
+                        },
+                        supported_resolutions: [
+                            '1', '3', '5', '15', '30', '60', '120', '240', '360', '720', 'D', 'W', 'M'
+                        ]
+                    }
+                }else{
+                    var tvconf = {
+                        supports_search: definitions.search,
+                        supports_group_request: definitions.group,
+                        supports_marks: definitions.marks,
+                        supports_timescale_marks: definitions.timescale,
+                        supports_time: definitions.time,
+                        exchanges: {
+                            value: this.exchange.toUpperCase(),
+                            name: this.exchange.toUpperCase(),
+                            desc: this.exchange.toUpperCase(),
+                        },
+                        supported_resolutions: [
+                            '5', '15', '1D', '1H', '4H'
+                        ]
+                    }
+                }
+               
+                return resolve(tvconf)
+            })
+        })
+    }
+
+    tradingViewChart(candleTime) {
         return new Promise((resolve, reject) => {
             settings(this.exchange, this.pair).then(data => {
                 heatmapCandles(this.exchange, data.Name, candleTime).then(chart => {
@@ -59,7 +101,7 @@ class tensorChart{
                         t: dateInt,
                         s: 'ok'
                     }
-                    
+
                     return resolve(obj)
                 }).catch(e => {
                     return reject(e)

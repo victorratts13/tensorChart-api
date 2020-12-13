@@ -7,10 +7,13 @@ const tensor = new tensorChart('binance', 'BNBBTC')
 //    console.log(data)
 //})
 
-tensor.tradingViewChart('5min').then(data => {
+//tensor.tradingViewChart('5min').then(data => {
+//    console.log(data)
+//})
+
+tensor.tradingViewConfig(null).then(data => {
     console.log(data)
 })
-
 //socket('reg', 'binanceBTCUSDT')
 
 //settings('binance', 'BNBBTC').then(data => {
