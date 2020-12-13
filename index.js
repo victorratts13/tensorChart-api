@@ -30,7 +30,7 @@ class tensorChart {
     tradingViewConfig(definitions = {}) {
         return new Promise((resolve, reject) => {
             settings(this.exchange, this.pair).then(info => {
-                if(definitions == {} || definitions == null){
+                if (definitions == {} || definitions == null) {
                     var tvconf = {
                         supports_search: true,
                         supports_group_request: false,
@@ -46,7 +46,7 @@ class tensorChart {
                             '1', '3', '5', '15', '30', '60', '120', '240', '360', '720', 'D', 'W', 'M'
                         ]
                     }
-                }else{
+                } else {
                     var tvconf = {
                         supports_search: definitions.search,
                         supports_group_request: definitions.group,
@@ -63,7 +63,47 @@ class tensorChart {
                         ]
                     }
                 }
-               
+                return resolve(tvconf)
+            })
+        })
+    }
+
+    tradingViewSymbols(definitions = {}) {
+        return new Promise((resolve, reject) => {
+            settings(this.exchange, this.pair).then(info => {
+                if (definitions == {} || definitions == null) {
+                    var tvconf = {
+                        name: this.pair,
+                        description: this.pair,
+                        type: "crypto",
+                        session: "24x7",
+                        timezone: "America/New_York",
+                        ticker: this.pair,
+                        minmov: 1,
+                        pricescale: 100000000,
+                        has_intraday: true,
+                        intraday_multipliers: ["1", "60"],
+                        supported_resolutions: ['1', '3', '5', '15', '30', '60', '120', '240', '360', '720', 'D', 'W', 'M'],
+                        volume_precision: 8,
+                        data_status: "streaming",
+                    }
+                } else {
+                    var tvconf = {
+                        name: this.pair,
+                        description: this.pair,
+                        type: info.BaseCurrencyLong,
+                        session: "24x7",
+                        timezone: "America/New_York",
+                        ticker: this.pair,
+                        minmov: 1,
+                        pricescale: 100000000,
+                        has_intraday: definitions.has_intraday,
+                        intraday_multipliers: ["1", "60"],
+                        supported_resolutions: ['5', '15', '60', '240', 'D'],
+                        volume_precision: 8,
+                        data_status: "streaming",
+                    }
+                }
                 return resolve(tvconf)
             })
         })

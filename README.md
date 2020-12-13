@@ -207,4 +207,41 @@ end return this.
 }
 ```
 
+## get tradingView symbols config
+
+to get symbols definitions for tradingView charts use this format code:
+
+```js
+tensor.tradingViewSymbols(null).then(data => {
+    console.log(data)
+})
+
+```
+
+and return this
+
+```bash
+{
+  name: 'BNBBTC',
+  description: 'BNBBTC',
+  type: 'crypto',
+  session: '24x7',
+  timezone: 'America/New_York',
+  ticker: 'BNBBTC',
+  minmov: 1,
+  pricescale: 100000000,
+  has_intraday: true,
+  intraday_multipliers: [ '1', '60' ],
+  supported_resolutions: [
+    '1',   '3',   '5',
+    '15',  '30',  '60',
+    '120', '240', '360',
+    '720', 'D',   'W',
+    'M'
+  ],
+  volume_precision: 8,
+  data_status: 'streaming'
+}
+```
+
 

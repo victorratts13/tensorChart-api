@@ -11,7 +11,7 @@ const tensor = new tensorChart('binance', 'BNBBTC')
 //    console.log(data)
 //})
 
-tensor.tradingViewConfig(null).then(data => {
+tensor.tradingViewSymbols(null).then(data => {
     console.log(data)
 })
 //socket('reg', 'binanceBTCUSDT')
