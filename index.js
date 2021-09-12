@@ -6,11 +6,18 @@ const {
     volumeCounters,
     heatmapCandles
 } = require("./controllers/requests");
+const { socket } = require("./controllers/socket");
 
 class tensorChart {
     constructor(exchange, pair) {
         this.exchange = exchange;
         this.pair = pair;
+    }
+
+    liveChart(settings = {type: 'reg', exchangeAndPair: 'binanceBTCUSDT'}, callback){
+        socket(settings.type, settings.exchangeAndPair, call => {
+            callback(JSON.parse(call))
+        })
     }
 
     chart(candleTime) {

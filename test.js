@@ -2,19 +2,24 @@ const { settings, trades, markets, orderBook, volumeCounters, heatmapCandles } =
 const tensorChart = require('./index');
 //use with exchange and currencie Pair
 const tensor = new tensorChart('binance', 'BNBBTC')
-//const {socket} = require("./controllers/socket");
-//tensor.chart('5min').then(data => {
+const {socket} = require("./controllers/socket");
+// tensor.chart('5min').then(data => {
 //    console.log(data)
-//})
+// })
 
 //tensor.tradingViewChart('5min').then(data => {
 //    console.log(data)
 //})
 
-tensor.tradingViewSymbols(null).then(data => {
-    console.log(data)
+// tensor.tradingViewSymbols(null).then(data => {
+//     console.log(data)
+// })
+tensor.liveChart({type: 'reg', exchangeAndPair: 'binanceBTCUSDT'}, call => {
+    console.log(call)
 })
-//socket('reg', 'binanceBTCUSDT')
+// socket('reg', 'binanceBTCUSDT', call => {
+//     console.log(JSON.parse(call))
+// })
 
 //settings('binance', 'BNBBTC').then(data => {
 //    console.log(data)

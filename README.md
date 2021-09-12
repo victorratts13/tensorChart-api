@@ -166,6 +166,18 @@ tensor.chart('5min').then(chart => {
   }
 ```
 
+## real time connection
+
+to realtime conncetion with websockets. use this: 
+
+```js
+//type is reg for default
+//exchangeAndPair is binance-BTCUSDT default
+tensor.liveChart({type: 'reg', exchangeAndPair: 'binanceBTCUSDT'}, call => {
+    console.log(call)
+})
+```
+
 ## format tradingview export
 
 to export tradingview format on ``udf`` protocol try this.:
