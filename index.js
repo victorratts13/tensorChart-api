@@ -14,8 +14,26 @@ class tensorChart {
         this.pair = pair;
     }
 
-    liveChart(settings = {type: 'reg', exchangeAndPair: 'binanceBTCUSDT'}, callback){
-        socket(settings.type, settings.exchangeAndPair, call => {
+    liveChartCandle(settings = {type: 'reg', time: '5min', exchangeAndPair: `${this.pair}${this.exchange}`}, callback){
+        socket(settings.type, settings.exchangeAndPair || `${this.pair}${this.exchange}`, call => {
+            var candle = JSON.parse(call)
+            if(candle.type == 'candle'){
+                
+                var chart = {
+                    open: candle.data[settings.time].open,
+                    close: candle.data[settings.time].close,
+                    high: candle.data[settings.time].high,
+                    low: candle.data[settings.time].low,
+                    vol: candle.data[settings.time].volume,
+                    time: candle.data[settings.time].dateInt
+                }
+                callback(chart)
+            }
+        })
+    }
+
+    liveChart(settings = {type: 'reg', exchangeAndPair: `${this.pair}${this.exchange}`}, callback){
+        socket(settings.type, settings.exchangeAndPair || `${this.pair}${this.exchange}`, call => {
             callback(JSON.parse(call))
         })
     }

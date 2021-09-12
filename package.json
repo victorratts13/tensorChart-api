@@ -1,6 +1,6 @@
 {
   "name": "tensorchart-api",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "api for https://www.tensorcharts.com/",
   "main": "index.js",
   "scripts": {

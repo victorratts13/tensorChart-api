@@ -10,13 +10,15 @@ const {socket} = require("./controllers/socket");
 //tensor.tradingViewChart('5min').then(data => {
 //    console.log(data)
 //})
-
+tensor.liveChartCandle({type: 'reg', time: '5min', exchangeAndPair: 'binanceBTCUSDT'}, call => {
+    console.log(call)
+})
 // tensor.tradingViewSymbols(null).then(data => {
 //     console.log(data)
 // })
-tensor.liveChart({type: 'reg', exchangeAndPair: 'binanceBTCUSDT'}, call => {
-    console.log(call)
-})
+// tensor.liveChart({type: 'reg', exchangeAndPair: 'binanceBTCUSDT'}, call => {
+//     console.log(call)
+// })
 // socket('reg', 'binanceBTCUSDT', call => {
 //     console.log(JSON.parse(call))
 // })

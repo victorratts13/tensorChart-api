@@ -168,6 +168,7 @@ tensor.chart('5min').then(chart => {
 
 ## real time connection
 
+### live socket
 to realtime conncetion with websockets. use this: 
 
 ```js
@@ -176,6 +177,32 @@ to realtime conncetion with websockets. use this:
 tensor.liveChart({type: 'reg', exchangeAndPair: 'binanceBTCUSDT'}, call => {
     console.log(call)
 })
+```
+
+### live chart
+
+to connect in live chart candle values, you can use this:
+
+```js
+//define type
+//define time
+//exchangeAndPair is binance on default
+tensor.liveChartCandle({type: 'reg', time: '5min', exchangeAndPair: 'binanceBTCUSDT'}, call => {
+    console.log(call)
+})
+```
+
+returns: 
+
+```js
+{
+  open: 45793.34,
+  close: 45859.64,
+  high: 45868.04,
+  low: 45767.61,
+  vol: 59.84709999999999,
+  time: 1631474400
+}
 ```
 
 ## format tradingview export
